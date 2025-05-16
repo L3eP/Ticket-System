@@ -21,7 +21,7 @@ A web-based ticket management system built with Node.js, Express, and MySQL.
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone https://github.com/L3eP/Ticket-System
 cd ticket-management-system
 ```
 
