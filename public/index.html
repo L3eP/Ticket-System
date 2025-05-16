@@ -88,26 +88,97 @@
         <div id="tableSection" class="section" style="display: none;">
             <div class="table-header">
                 <h2>Ticket List</h2>
-                <button onclick="exportToCSV()" class="export-btn">Export to CSV</button>
+                <div class="table-actions">
+                    <button onclick="exportToCSV()" class="export-btn">Export to CSV</button>
+                    <button onclick="exportToExcel()" class="export-btn">Export to Excel</button>
+                    <button onclick="exportToPDF()" class="export-btn">Export to PDF</button>
+                </div>
             </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                </div>
+                <div class="filter-controls">
+                    <select id="statusFilter">
+                        <option value="">All Status</option>
+                        <option value="Terlapor">Terlapor</option>
+                        <option value="Dikerjakan">Dikerjakan</option>
+                        <option value="Selesai">Selesai</option>
+                        <option value="Pending">Pending</option>
+                    </select>
+                    <select id="priorityFilter">
+                        <option value="">All Priority</option>
+                        <option value="Low">Low</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
+                    <select id="picFilter">
+                        <option value="">All PIC</option>
+                        <option value="Ijang">Ijang</option>
+                        <option value="Ijang2">Ijang2</option>
+                    </select>
+                    <select id="aktivitasFilter">
+                        <option value="">All Aktivitas</option>
+                        <option value="PSB">PSB</option>
+                        <option value="Maintenance">Maintenance</option>
+                        <option value="Migrasi">Migrasi</option>
+                    </select>
+                    <select id="subNodeFilter">
+                        <option value="">All Sub-Node</option>
+                        <option value="ANJ">ANJ</option>
+                        <option value="SKM">SKM</option>
+                        <option value="JRG">JRG</option>
+                        <option value="DMS">DMS</option>
+                        <option value="RKM">RKM</option>
+                        <option value="MBL">MBL</option>
+                    </select>
+                    <div class="date-filter">
+                        <input type="date" id="dateFrom" placeholder="From Date">
+                        <input type="date" id="dateTo" placeholder="To Date">
+                    </div>
+                </div>
+            </div>
+
             <table id="ticketTable">
                 <thead>
                     <tr>
-                        <th>Status</th>
-                        <th>Priority</th>
-                        <th>PIC</th>
-                        <th>Aktivitas</th>
-                        <th>Sub-Node/Lokasi</th>
-                        <th>Info</th>
+                        <th data-sort="status">Status <span class="sort-icon">↕</span></th>
+                        <th data-sort="priority">Priority <span class="sort-icon">↕</span></th>
+                        <th data-sort="pic">PIC <span class="sort-icon">↕</span></th>
+                        <th data-sort="aktivitas">Aktivitas <span class="sort-icon">↕</span></th>
+                        <th data-sort="sub_node">Sub-Node/Lokasi <span class="sort-icon">↕</span></th>
+                        <th data-sort="info">Info <span class="sort-icon">↕</span></th>
                         <th>Evidence</th>
-                        <th>Date Terlapor</th>
-                        <th>Date Selesai</th>
+                        <th data-sort="date_terlapor">Date Terlapor <span class="sort-icon">↕</span></th>
+                        <th data-sort="date_selesai">Date Selesai <span class="sort-icon">↕</span></th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody id="ticketTableBody">
                 </tbody>
             </table>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="pagination-info">
+                    Showing <span id="startRecord">0</span> to <span id="endRecord">0</span> of <span id="totalRecords">0</span> entries
+                </div>
+                <div class="pagination-controls">
+                    <select id="pageSize">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <button id="firstPage" class="page-btn">First</button>
+                    <button id="prevPage" class="page-btn">Previous</button>
+                    <span id="currentPage">Page 1</span>
+                    <button id="nextPage" class="page-btn">Next</button>
+                    <button id="lastPage" class="page-btn">Last</button>
+                </div>
+            </div>
         </div>
     </div>
 
